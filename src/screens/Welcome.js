@@ -23,41 +23,14 @@ import {
   DebugInstructions,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
-import { createStore } from 'redux';
+
+import { connect } from 'react-redux';
 
 import Header from '../components/Header';
+import { actionIncrement } from '../_actions/counter';
 
-const initialState = {
-  number: 0
-}
-// this reducer
-function counter(state = initialState, action) {
-  switch (action.type) {
-    case 'INCREMENT':
-      return {
-        number: state.number + 1
-      }
-    case 'DECREMENT':
-      return {
-        number: state.number - 1
-      }
-    default:
-      return state
-  }
-}
-
-let store = createStore(counter)
-
-store.subscribe(() => console.log(store.getState().number))
-
-// this action
-const actionINC = () => {
-  return {
-    type: 'INCREMENT'
-  }
-}
-
-const Welcome = () => {
+const Welcome = (props) => {
+  console.log(props)
   return (
     <Fragment>
       <StatusBar barStyle="dark-content" />
@@ -66,15 +39,34 @@ const Welcome = () => {
           contentInsetAdjustmentBehavior="automatic"
           style={styles.scrollView}>
           <Header />
-          <Text>{}</Text>
-          <Button title="INC" onPress={() => store.dispatch(actionINC())} />
+          <View style={styles.counter}>
+            <Text>{props.counter.label}</Text>
+            <Text style={styles.number}>{props.counter.number}</Text>
+            <Button title="INC" onPress={() => props.dispatch(actionIncrement())} />
+          </View>
         </ScrollView>
       </SafeAreaView>
     </Fragment>
   );
 };
 
+const mapStateToProps = (state) => {
+  return {
+    counter: state.counter
+  }
+}
+
+export default connect(mapStateToProps)(Welcome);
+
 const styles = StyleSheet.create({
+  number: {
+    fontSize: 100
+  },
+  counter: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
   scrollView: {
     backgroundColor: Colors.lighter,
   },
@@ -113,4 +105,3 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Welcome;
