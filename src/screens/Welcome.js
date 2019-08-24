@@ -30,7 +30,6 @@ import Header from '../components/Header';
 import { actionIncrement } from '../_actions/counter';
 
 const Welcome = (props) => {
-  console.log(props)
   return (
     <Fragment>
       <StatusBar barStyle="dark-content" />
