@@ -1,11 +1,13 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 
 import counter from '../_reducers/counter';
-import { logger } from './middleware'
+import users from '../_reducers/users';
+import { logger } from './middleware';
 
 // this global states
 const reducers = combineReducers({
-  counter
+  counter,
+  users
 })
 
 const store = createStore(
