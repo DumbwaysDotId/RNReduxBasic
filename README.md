@@ -1,8 +1,7 @@
 "# RNReduxBasic" 
 # Project Directory Structure
 
-```
-...
+
 |-- src
 |  |-- actions
 |  |  `-- counter.js
@@ -16,5 +15,3 @@
 |  |  `-- Counter.js
 |-- App.js
 `-- index.js
-...
-```
