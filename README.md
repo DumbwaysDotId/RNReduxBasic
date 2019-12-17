@@ -56,7 +56,7 @@ store.subscribe(() => {
 const actionINC = () => {
   return {
     type: 'INCREMENT',
-    payload
+    payload: null
   }
 }
 
