@@ -18,7 +18,7 @@ yarn add react-redux
 
 ## How to use
 ```
-import react from 'react';
+import React from 'react';
 import { createStore } from 'redux';
 
 // setup reducer
@@ -40,19 +40,28 @@ function counter(state = initialState, action) {
   }
 }
 
+// initial store 
 let store = createStore(counter)
 
+// listen value global state, with `store.subscribe`
+// global state can be access to `store.getState()`
 store.subscribe(() => {
   console.log(store.getState().number))
 }
 
 // setup action
+// action is function with return value object. usually has a property type and payload
+// the `type` property contains a string corresponding to the case in the reducer
+// the `payload` property usually contains data to throw to the reducer
 const actionINC = () => {
   return {
-    type: 'INCREMENT'
+    type: 'INCREMENT',
+    payload
   }
 }
 
+
+//functional component
 const App = () => {
   return (
     <div>
