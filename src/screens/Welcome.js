@@ -18,11 +18,9 @@ import {
 } from 'react-native';
 
 import {
-  LearnMoreLinks,
   Colors,
-  DebugInstructions,
-  ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+
 import { createStore } from 'redux';
 
 import Header from '../components/Header';
